@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0d0e">
+<meta name="description" content="Discover the highest-rated films from every year, 1920 to today. A free, unofficial Stremio catalogue add-on powered by IMDb's public ratings data.">
+<title>Top Rated Films by Year | Unofficial Stremio Add-on</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#0b0e10;--panel:#121619;--edge:#2a3034;--grey:#aeb6bc;--yellow:#f8c72c;--yellow-2:#ffe064;--white:#f7f8fa;--max:1450px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--white);font:15px/1.5 Inter,Arial,system-ui,sans-serif}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #fff;outline-offset:3px}button:disabled{opacity:.4;cursor:not-allowed}.container{width:min(100% - 92px,var(--max));margin:auto}.yellow{color:var(--yellow)}
+/* Header — the IMDb styling is a visual reference, not a claim of affiliation. */
+.site-header{position:relative;z-index:10;background:#090b0ccc;border-bottom:1px solid #ffffff14;backdrop-filter:blur(14px)}.header-inner{height:74px;display:flex;align-items:center;gap:46px}.brand{display:flex;flex-direction:column;align-items:flex-start;flex-shrink:0;gap:4px}.brand-mark{display:inline-flex;align-items:center;justify-content:center;background:var(--yellow);color:#080909;padding:2px 9px;border-radius:5px;height:35px;font-family:Arial Black,Impact,Inter,sans-serif;font-weight:900;font-size:26px;letter-spacing:-1.8px;line-height:1}.brand-sub{color:#b7bdc0;font-size:8.2px;font-weight:700;letter-spacing:.09em;white-space:nowrap}.main-nav{display:flex;gap:38px;align-self:stretch;align-items:stretch}.main-nav a{display:inline-flex;align-items:center;position:relative;color:#d4d8dc;white-space:nowrap;font-size:13px;font-weight:600}.main-nav a:hover,.main-nav a.active{color:var(--yellow)}.main-nav a.active:after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--yellow)}.search-wrap{margin-left:auto;position:relative;min-width:210px;width:min(310px,30vw)}.search-icon{position:absolute;left:15px;top:50%;width:18px;height:18px;transform:translateY(-50%);pointer-events:none;color:#ced4d9}.search-wrap input{width:100%;height:42px;border:1px solid #42494f;border-radius:11px;background:linear-gradient(120deg,#20252a,#151a1e);color:white;padding:0 13px 0 44px;font-size:13px}.search-wrap input::placeholder{color:#b6bdc3}.search-results{position:absolute;top:calc(100% + 9px);right:0;width:min(410px,90vw);max-height:370px;overflow:auto;background:#171d21;border:1px solid #414a50;border-radius:13px;box-shadow:0 20px 50px #0009;padding:7px;z-index:50}.search-results[hidden]{display:none}.search-result{width:100%;border:0;background:transparent;color:white;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:15px;padding:11px;border-radius:8px;font-size:13px}.search-result:hover{background:#30383d}.search-result small{color:var(--yellow);white-space:nowrap}.search-no-results{padding:14px;font-size:12px;color:var(--grey)}
+/* Cinematic banner */
+.hero{height:358px;position:relative;overflow:hidden;border-bottom:1px solid #ffffff1a;background:#080a0a}.hero-background{position:absolute;inset:0;background-size:cover;background-position:center 38%;transition:opacity 1s ease;opacity:0}.hero-background.on{opacity:1}.hero-background.a{background-image:url('assets/hero-fallback.webp')}.hero-scrim{position:absolute;inset:0;background:linear-gradient(90deg,#050708 0%,#050708fa 19%,#07090bdc 35%,#06080a83 53%,#00000010 73%,#00000055 100%),linear-gradient(0deg,#0507099c,transparent 25%);pointer-events:none}.hero-inner{position:relative;z-index:2;height:100%;display:flex;align-items:center}.hero-copy{max-width:660px;padding-bottom:4px}.eyebrow{font-size:12px;font-weight:600;letter-spacing:.18em;color:#dce0e3}.hero h1{font-size:clamp(48px,4.7vw,76px);line-height:.96;letter-spacing:-.056em;font-weight:900;margin:7px 0 14px}.hero h1 span{display:block}.hero p{font-size:clamp(14px,1.2vw,17px);line-height:1.5;max-width:605px;color:#e1e5e8;margin:0 0 18px}.hero-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.primary-btn,.secondary-btn{border-radius:9px;display:inline-flex;align-items:center;justify-content:center;gap:11px;padding:12px 19px;min-height:49px;font-size:14px;font-weight:800;white-space:nowrap}.primary-btn{border:1px solid var(--yellow);background:var(--yellow);color:#090c0c}.primary-btn:hover{background:var(--yellow-2)}.secondary-btn{background:#141a1eaa;color:white;border:1px solid #75818a}.secondary-btn:hover{border-color:white;background:#22292d}.btn-icon{width:20px;height:20px}.hero-caption{position:absolute;z-index:3;bottom:20px;right:clamp(22px,4vw,78px);font-size:12px;text-align:right;text-shadow:0 2px 7px #000;line-height:1.7}.hero-caption b{display:block;font-weight:700}.hero-caption .star{color:var(--yellow);font-size:16px}.hero-caption[hidden]{display:none}
+/* Four benefits */
+.benefits{background:#0b0d0efa;border-bottom:1px solid #ffffff20}.benefit-grid{min-height:107px;display:grid;grid-template-columns:repeat(4,1fr);align-items:center}.benefit{display:flex;gap:20px;align-items:center;padding:6px 22px;min-width:0;min-height:62px;border-right:1px solid #303539}.benefit:first-child{padding-left:8px}.benefit:last-child{border:0;padding-right:0}.benefit svg{color:var(--yellow);flex:0 0 38px;width:38px;height:38px;stroke-width:1.8}.benefit b{display:block;font-size:13px;margin-bottom:4px}.benefit span{display:block;color:#bfc5cb;font-size:12.5px;line-height:1.55}
+/* Film list */
+.main-area{background:radial-gradient(ellipse 70% 90% at 50% -55%,#343a3b55,transparent),#101416;padding:21px 0 48px}.catalogue-head{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:21px}.catalogue-head h2{font-size:26px;line-height:1.15;letter-spacing:-.038em;margin:0;font-weight:800}.accent-line{height:3px;width:44px;background:var(--yellow);margin-top:12px}.catalogue-controls{display:flex;gap:28px;align-items:center}.year-select-wrap{position:relative;display:block}.year-select-wrap select{appearance:none;-webkit-appearance:none;min-width:226px;height:45px;border-radius:9px;border:1px solid #5b646c;background:#0d1114;color:white;padding:0 46px 0 17px;font-weight:600;font-size:15px;cursor:pointer}.year-select-wrap:after{content:"";position:absolute;right:19px;top:18px;width:8px;height:8px;border-bottom:1.5px solid white;border-right:1.5px solid white;transform:rotate(45deg);pointer-events:none}.text-btn{color:var(--yellow);background:none;border:0;font-weight:700;white-space:nowrap;font-size:13px;padding:8px 0}.text-btn:hover{text-decoration:underline}.text-btn .arrow{margin-left:8px;font-size:20px;vertical-align:-1px}.catalogue-meta{display:flex;gap:8px;align-items:center;color:#acb5ba;font-size:12px;min-height:15px;margin-bottom:12px}.catalogue-meta strong{color:#f1f3f5}.film-scroller{position:relative}.film-grid{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:14px}.film-grid.expanded{grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:20px 15px}.film{min-width:0;margin:0}.poster-link{display:block;position:relative;border-radius:6px;overflow:hidden;background:linear-gradient(145deg,#2c3135,#16191c);aspect-ratio:2/2.55;border:1px solid #45494c}.poster-link img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .22s}.poster-link:hover img{transform:scale(1.055)}.poster-fallback[hidden]{display:none!important}.poster-link .poster-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px;font-weight:700;font-size:12px;color:#b5bfc5}.rank{position:absolute;left:0;bottom:0;padding:5px 9px;background:#060708df;color:white;font-size:13px;line-height:1.2;border-radius:0 6px 0 0}.film-title{display:block;margin:7px 0 3px;font-size:12px;line-height:1.32;overflow-wrap:anywhere;font-weight:700}.film-title:hover{color:var(--yellow)}.rating{display:flex;gap:5px;align-items:center;color:#cdd3d7;font-size:12px}.rating .star{color:var(--yellow);font-size:15px;line-height:1}.carousel-nav{position:absolute;right:-24px;top:29%;width:43px;height:43px;border-radius:50%;border:1px solid #40484f;background:#090c0eea;color:white;font-size:28px;box-shadow:0 2px 14px #0008}.carousel-nav:hover{color:var(--yellow);background:#22282b}.carousel-nav[hidden]{display:none}.film-grid:not(.expanded).page-next{animation:cardSlide .2s ease}@keyframes cardSlide{from{opacity:.45;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}.notice{border:1px dashed #586169;border-radius:9px;color:#bfc7cd;padding:24px;text-align:center;background:#14191a;font-size:14px}.notice[hidden]{display:none}.loading-posters{opacity:.6}
+/* Footer feature tiles */
+.info-row{border:1px solid #293137;border-radius:11px;display:grid;grid-template-columns:repeat(4,1fr);margin-top:27px;background:linear-gradient(135deg,#14191c,#111517)}.info-cell{padding:21px 22px;display:flex;gap:15px;position:relative}.info-cell:not(:last-child):after{content:"";position:absolute;right:0;top:20px;bottom:20px;width:1px;background:#30373c}.info-cell svg{width:29px;height:29px;flex:0 0 29px;color:var(--yellow)}.info-cell h3{font-size:13px;margin:1px 0 6px}.info-cell p{font-size:11.8px;line-height:1.65;color:#bac2c8;margin:0}.info-cell a{color:var(--yellow);text-decoration:underline}.info-cell .github-mark{color:white}
+.site-footer{border-top:1px solid #283036;color:#9ba4aa;background:#0a0d0f;padding:22px 0 36px}.footer-inner{display:flex;align-items:flex-start;justify-content:space-between;gap:24px}.site-footer p{margin:0 0 7px;max-width:920px;font-size:11.5px;line-height:1.6}.site-footer a{color:#e9edef;text-decoration:underline;text-underline-offset:3px}.footer-badge{white-space:nowrap;border:1px solid #303940;padding:6px 9px;border-radius:6px;font-size:10px;letter-spacing:.07em}
+.toast{position:fixed;z-index:100;left:50%;bottom:25px;transform:translate(-50%,25px);background:var(--yellow);color:#101313;padding:10px 18px;border-radius:9px;box-shadow:0 8px 35px #000a;font-weight:800;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:1100px){.container{width:min(100% - 46px,var(--max))}.header-inner{gap:23px}.main-nav{gap:22px}.benefit{padding:8px 15px;gap:12px}.benefit svg{width:29px;height:29px;flex-basis:29px}.benefit b{font-size:12px}.benefit span{font-size:11px}.film-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.film-grid:not(.expanded) .film:nth-child(n+6){display:none}.info-row{grid-template-columns:repeat(2,1fr)}.info-cell:nth-child(2):after{display:none}.info-cell:nth-child(-n+2){border-bottom:1px solid #2a3136}}
+@media(max-width:760px){.container{width:min(100% - 32px,var(--max))}.header-inner{height:auto;min-height:73px;gap:16px;flex-wrap:wrap;padding:12px 0}.main-nav{order:3;width:100%;height:30px;gap:24px}.main-nav a{font-size:12px}.search-wrap{min-width:0;flex:1;width:auto}.hero{height:auto;min-height:390px}.hero-inner{padding:43px 0 66px}.hero-copy{max-width:540px}.hero h1{font-size:clamp(46px,8vw,65px)}.hero-scrim{background:linear-gradient(90deg,#070809fa,#090b0be7 38%,#0709097a),linear-gradient(0deg,#05070890,transparent 30%)}.hero-caption{bottom:12px;font-size:11px}.benefit-grid{grid-template-columns:repeat(2,1fr);padding:14px 0;row-gap:14px}.benefit:nth-child(2){border-right:0}.benefit:nth-child(3),.benefit:nth-child(4){border-top:1px solid #293035;padding-top:14px}.catalogue-head{align-items:flex-start;gap:16px;flex-wrap:wrap}.catalogue-controls{width:100%;gap:18px;justify-content:space-between}.year-select-wrap{flex:1}.year-select-wrap select{min-width:0;width:100%}.carousel-nav{right:-10px}.info-cell{padding:19px 14px}}
+@media(max-width:480px){.hero h1{font-size:clamp(45px,11.7vw,58px)}.hero p{font-size:13px}.hero-actions{align-items:stretch;flex-direction:column}.primary-btn,.secondary-btn{width:100%;padding:11px 14px}.benefit{gap:9px;padding:9px}.benefit svg{width:25px;height:25px;flex-basis:25px}.benefit b{font-size:11.5px}.benefit span{font-size:10.5px}.catalogue-head h2{font-size:25px}.film-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.film-grid:not(.expanded) .film:nth-child(n+3){display:none}.film-grid.expanded{grid-template-columns:repeat(2,minmax(0,1fr))}.film-title{font-size:13px}.poster-link{aspect-ratio:2/2.65}.info-row{grid-template-columns:1fr}.info-cell:not(:last-child){border-bottom:1px solid #2a3136}.info-cell:after{display:none!important}.footer-inner{display:block}.footer-badge{display:inline-block;margin-top:10px}.search-wrap input{font-size:12px;padding-left:37px}.search-icon{left:11px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="7.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16.3 16.3 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="icon-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 5V4a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h1" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="icon-puzzle" viewBox="0 0 24 24"><path d="M8 2h4v4c3-3 7 0 5 3h5v5h-5c2 3-1 6-4 4v4H8v-5C5 19 2 16 4 13H2V8h5C5 5 6 3 8 2Z" fill="currentColor"/></symbol>
+  <symbol id="icon-chart" viewBox="0 0 24 24"><path d="M3 21h18M5 18v-6h4v6m2 0V9h4v9m2 0V3h4v15" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+  <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M7 2v6M17 2v6M3 10h18" stroke="currentColor" stroke-width="1.7"/></symbol>
+  <symbol id="icon-shield" viewBox="0 0 24 24"><path d="m12 2 9 4v6c0 6-3.7 9-9 11-5.3-2-9-5-9-11V6l9-4Z" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m8 12 3 3 5-6" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+  <symbol id="icon-layers" viewBox="0 0 24 24"><path d="m12 2 10 5-10 5L2 7l10-5Zm-10 10 10 5 10-5M2 17l10 5 10-5" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+  <symbol id="icon-film" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M7 3v18M17 3v18M2 9h5m-5 6h5M17 9h5m-5 6h5" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+  <symbol id="icon-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M10 2h4l1 3 3 1 3-1 2 4-2 2v3l2 2-2 4-3-1-3 1-1 3h-4l-1-3-3-1-3 1-2-4 2-2v-3L1 9l2-4 3 1 3-1 1-3Z" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="icon-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3 5v14c0 4 18 4 18 0V5M3 12c0 4 18 4 18 0" fill="none" stroke="currentColor" stroke-width="1.7"/></symbol>
+  <symbol id="icon-github" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .8a11.2 11.2 0 0 0-3.54 21.82c.56.1.77-.24.77-.54v-2.17c-3.12.68-3.78-1.32-3.78-1.32-.5-1.26-1.24-1.6-1.24-1.6-1.02-.7.08-.7.08-.7 1.13.08 1.73 1.16 1.73 1.16 1 1.72 2.63 1.22 3.27.93.1-.72.39-1.21.71-1.49-2.49-.29-5.1-1.25-5.1-5.54 0-1.23.44-2.23 1.16-3.02-.12-.29-.5-1.43.11-2.97 0 0 .94-.3 3.08 1.16a10.7 10.7 0 0 1 5.6 0c2.13-1.46 3.07-1.16 3.07-1.16.61 1.54.23 2.68.12 2.97.72.8 1.15 1.79 1.15 3.02 0 4.3-2.62 5.24-5.12 5.53.4.34.76 1 .76 2.04v3.03c0 .3.2.65.78.54A11.2 11.2 0 0 0 12 .8Z"/></symbol>
+</svg>
+<header class="site-header">
+ <div class="container header-inner">
+  <a class="brand" href="#films" aria-label="Top Rated Films by Year, unofficial Stremio add-on"><span class="brand-mark">IMDb</span><span class="brand-sub">UNOFFICIAL STREMIO ADD-ON</span></a>
+  <nav class="main-nav" aria-label="Main menu"><a class="active" href="#films">Top Rated by Year</a><a href="#how">How It Works</a><a href="#about">About</a></nav>
+  <div class="search-wrap" id="searchWrap"><svg class="search-icon"><use href="#icon-search"/></svg><input id="siteSearch" type="search" placeholder="Search films, years..." autocomplete="off" aria-label="Search films or years" aria-controls="searchResults" aria-expanded="false"><div class="search-results" id="searchResults" role="listbox" hidden></div></div>
+ </div>
+</header>
+<section class="hero" aria-labelledby="heroTitle"><div class="hero-background a on" id="heroA"></div><div class="hero-background" id="heroB"></div><div class="hero-scrim"></div>
+ <div class="container hero-inner"><div class="hero-copy"><div class="eyebrow">UNOFFICIAL STREMIO ADD-ON</div><h1 id="heroTitle"><span class="yellow">Top Rated</span><span>Films by Year</span></h1><p>Explore the highest-rated films of every year from 1920 to now, using IMDb's public ratings data. A free, unofficial Stremio add-on built for film lovers.</p><div class="hero-actions"><a id="install" class="primary-btn" href="#"><svg class="btn-icon"><use href="#icon-puzzle"/></svg>Install Add-on for Stremio <span aria-hidden="true">›</span></a><button class="secondary-btn" type="button" id="copyBtn"><svg class="btn-icon"><use href="#icon-copy"/></svg><span id="copyLabel">Copy Stremio Link</span></button></div></div></div>
+ <div class="hero-caption" id="heroCaption" hidden><b id="heroFilm"></b><span><span class="star">★ </span><span id="heroRating"></span> IMDb</span></div>
+</section>
+<section class="benefits" aria-label="Highlights"><div class="container benefit-grid">
+ <div class="benefit"><svg><use href="#icon-chart"/></svg><div><b>Highest-rated films</b><span>Ranked using a weighted formula similar to IMDb's Top 250.</span></div></div>
+ <div class="benefit"><svg><use href="#icon-calendar"/></svg><div><b>Every year from 1920</b><span>Pick a year and explore that year's best films.</span></div></div>
+ <div class="benefit"><svg><use href="#icon-shield"/></svg><div><b>Credible lists</b><span>20,000+ votes (2000+). No shorts or concerts; docs included.</span></div></div>
+ <div class="benefit"><svg><use href="#icon-layers"/></svg><div><b>Updated weekly</b><span>Automatically rebuilt from fresh IMDb data on GitHub.</span></div></div>
+</div></section>
+<main class="main-area" id="films"><div class="container">
+ <div class="catalogue-head"><div><h2>Top Rated Films</h2><div class="accent-line"></div></div><div class="catalogue-controls"><label class="year-select-wrap"><span class="sr-only" style="position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden">Choose release year</span><select id="yearSelect" aria-label="Choose release year"><option value="2026" selected>2026</option></select></label><button class="text-btn" id="fullList" type="button" disabled>View full list <span class="arrow" aria-hidden="true">→</span></button></div></div>
+ <div class="catalogue-meta" aria-live="polite"><span id="resultCount">Loading the film lists…</span><span id="updated"></span></div>
+ <div class="film-scroller"><div class="film-grid" id="filmGrid" aria-label="Top rated film posters"></div><button class="carousel-nav" type="button" id="carouselNext" aria-label="Show more films" hidden>›</button></div><div class="notice" id="notice" role="status" hidden></div>
+ <section class="info-row" id="how" aria-label="About the add-on">
+  <div class="info-cell"><svg><use href="#icon-film"/></svg><div><h3>What is this?</h3><p>A free, unofficial Stremio add-on listing the highest-rated films of every year from 1920 to now, using IMDb's public data.</p></div></div>
+  <div class="info-cell"><svg><use href="#icon-settings"/></svg><div><h3>How it works</h3><p>Select a year in Stremio. Films are ordered using a vote-weighted score, with a minimum number of votes for credible rankings.</p></div></div>
+  <div class="info-cell"><svg><use href="#icon-database"/></svg><div><h3>Filtering</h3><p>Only feature-length films rated 6.0 or higher. Documentaries are included; shorts and concert films aren't. Indian-language films from 2015 onwards are excluded under the existing ranking rule.</p></div></div>
+  <div class="info-cell"><svg class="github-mark"><use href="#icon-github"/></svg><div><h3>Open source</h3><p>Entirely hosted on GitHub, rebuilt weekly and published to GitHub Pages. <a id="sourceRepo" href="https://github.com/momoneymoproblemo/top-rated-by-year" rel="noopener noreferrer" target="_blank">View the source ↗</a></p></div></div>
+ </section>
+</div></main>
+<footer class="site-footer" id="about"><div class="container footer-inner"><div><p>This is a catalogue-only add-on: it supplies film lists, not streams. Keep your existing Stremio streaming add-ons to watch films.</p><p>IMDb ratings data for non-commercial use. Unofficial project, <strong>not affiliated with or endorsed by IMDb or Stremio</strong>. India and language data sourced from Wikidata; posters and backdrops from Stremio's metadata image service. <a href="https://www.imdb.com" target="_blank" rel="noopener">IMDb</a> · <a href="https://www.wikidata.org" target="_blank" rel="noopener">Wikidata</a></p></div><span class="footer-badge">1920 — NOW · WEEKLY</span></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+'use strict';
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const base = new URL('.', location.href).href;
+  const manifest = new URL('manifest.json', base).href;
+  const currentYear = new Date().getFullYear();
+  $('yearSelect').firstElementChild.textContent = String(currentYear); $('yearSelect').firstElementChild.value = String(currentYear);
+  $('install').href = manifest.replace(/^https?:\/\//i, 'stremio://');
+  const segments = new URL(base).pathname.split('/').filter(Boolean);
+  if (location.hostname.endsWith('.github.io') && segments.length) $('sourceRepo').href = 'https://github.com/' + encodeURIComponent(location.hostname.split('.')[0]) + '/' + encodeURIComponent(segments[0]);
+  let years = [], activeYear = String(currentYear), allFilms = [], expanded = false, page = 0, fetchSeq = 0;
+  let heroFilms = [], heroTimer, heroIndex = 0, heroSequence = 0, heroLayer = 'heroA', globalFilms = null, toastTimer;
+  const perPage = () => innerWidth <= 480 ? 2 : innerWidth <= 1100 ? 5 : 10;
+  function announce(msg) { $('toast').textContent = msg; $('toast').classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => $('toast').classList.remove('show'), 2600); }
+  async function copyLink() {
+    try {
+      if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(manifest);
+      else { const el = document.createElement('textarea'); el.value = manifest; el.style.cssText = 'position:fixed;left:-10000px'; document.body.append(el); el.select(); if (!document.execCommand('copy')) throw Error('copy failed'); el.remove(); }
+      $('copyLabel').textContent = 'Copied!'; announce('Stremio add-on link copied'); setTimeout(() => $('copyLabel').textContent = 'Copy Stremio Link', 2300);
+    } catch (e) { window.prompt('Copy this Stremio manifest link:', manifest); }
+  }
+  $('copyBtn').addEventListener('click', copyLink);
+  function resetHero() { clearInterval(heroTimer); heroFilms = []; heroIndex = 0; ++heroSequence; $('heroCaption').hidden = true; }
+  function updateHero(films) {
+    resetHero(); heroFilms = films.filter(f => f.background).slice(0, 8);
+    if (!heroFilms.length) return;
+    rotateHero(); heroTimer = setInterval(rotateHero, 8500);
+  }
+  function rotateHero() {
+    if (!heroFilms.length || document.hidden) return;
+    const seq = heroSequence, target = heroFilms[heroIndex++ % heroFilms.length];
+    const pic = new Image(); pic.onload = () => {
+      if (seq !== heroSequence) return;
+      const incoming = heroLayer === 'heroA' ? 'heroB' : 'heroA';
+      $(incoming).style.backgroundImage = `url("${target.background}")`;
+      $(incoming).style.backgroundPosition = 'center center';
+      $(incoming).classList.add('on'); $(heroLayer).classList.remove('on'); heroLayer = incoming;
+      $('heroFilm').textContent = `${target.name} (${target.releaseInfo || activeYear})`;
+      $('heroRating').textContent = target.imdbRating;
+      $('heroCaption').hidden = false;
+    };
+    pic.onerror = () => { /* Missing metadata art: keep the previous still. */ };
+    pic.src = target.background;
+  }
+  const poster = (m, index) => {
+    const figure = document.createElement('figure'); figure.className = 'film';
+    const a = document.createElement('a'); a.className = 'poster-link'; a.href = 'https://www.imdb.com/title/' + encodeURIComponent(m.id) + '/'; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.title = `${m.name} — open on IMDb`;
+    const img = document.createElement('img'); img.src = m.poster; img.alt = m.name + ' film poster'; img.loading = index < 10 ? 'eager' : 'lazy';
+    const missing = document.createElement('span'); missing.className = 'poster-fallback'; missing.textContent = m.name; missing.hidden = true;
+    img.onerror = () => { img.style.display = 'none'; missing.hidden = false; };
+    const rank = document.createElement('span'); rank.className = 'rank'; rank.textContent = index + 1;
+    a.append(img, missing, rank);
+    const title = document.createElement('a'); title.className = 'film-title'; title.href = a.href; title.target = '_blank'; title.rel = 'noopener noreferrer'; title.textContent = m.name;
+    const rating = document.createElement('div'); rating.className = 'rating'; const star = document.createElement('span'); star.className = 'star'; star.textContent = '★'; rating.append(star, document.createTextNode(m.imdbRating || '—'));
+    figure.append(a, title, rating); return figure;
+  };
+  function render() {
+    const grid = $('filmGrid'); grid.replaceChildren(); grid.classList.toggle('expanded', expanded);
+    const n = perPage(); const start = expanded ? 0 : page * n; const chosen = expanded ? allFilms : allFilms.slice(start, start + n);
+    chosen.forEach((film, i) => grid.append(poster(film, start + i)));
+    $('carouselNext').hidden = expanded || allFilms.length <= n;
+    const remaining = Math.max(0, allFilms.length - n); $('fullList').disabled = !allFilms.length;
+    $('fullList').innerHTML = (expanded ? 'Show top ' + Math.min(10, allFilms.length) : 'View full list') + ' <span class="arrow" aria-hidden="true">→</span>';
+    const notice = $('notice'); notice.hidden = !!allFilms.length;
+    if (!allFilms.length) notice.textContent = `No films from ${activeYear} meet the ranking criteria yet. Choose another year.`;
+  }
+  async function yearPage(y, skip = 0) {
+    const suffix = `catalog/movie/top-by-year/genre=${encodeURIComponent(y)}${skip ? '&skip=' + skip : ''}.json`;
+    const resp = await fetch(new URL(suffix, base)); if (!resp.ok) throw Error(`HTTP ${resp.status}`);
+    const body = await resp.json(); return body.metas || [];
+  }
+  async function showYear(y) {
+    const seq = ++fetchSeq;
+    activeYear = String(y); $('yearSelect').value = activeYear; resetHero();
+    expanded = false; page = 0; allFilms = []; $('filmGrid').replaceChildren(); $('notice').hidden = true;
+    $('resultCount').textContent = 'Loading ' + activeYear + '…'; $('carouselNext').hidden = true; $('fullList').disabled = true;
+    try {
+      const first = await yearPage(activeYear); if (seq !== fetchSeq) return;
+      allFilms = first; $('resultCount').textContent = first.length ? `The best films of ${activeYear}, ranked by IMDb's weighted score` : `No qualifying films for ${activeYear} yet`;
+      updateHero(first); render();
+    } catch (err) {
+      if (seq !== fetchSeq) return;
+      $('resultCount').textContent = `Can't load ${activeYear} just now`;
+      $('notice').hidden = false; $('notice').textContent = 'Film lists are still building or temporarily unavailable. Once the GitHub update finishes, refresh this page.';
+    }
+  }
+  $('yearSelect').addEventListener('change', e => showYear(e.target.value));
+  $('carouselNext').addEventListener('click', () => { const pages = Math.ceil(allFilms.length / perPage()); page = (page + 1) % pages; $('filmGrid').classList.remove('page-next'); void $('filmGrid').offsetWidth; $('filmGrid').classList.add('page-next'); render(); });
+  $('fullList').addEventListener('click', async () => {
+    if (expanded) { expanded = false; page = 0; render(); $('films').scrollIntoView({ block: 'start', behavior: 'smooth' }); return; }
+    const year = activeYear, seq = fetchSeq; $('fullList').disabled = true;
+    try {
+      const count = Number(window.yearCounts && window.yearCounts[year]) || allFilms.length;
+      const batches = []; for (let skip = 100; skip < count; skip += 100) batches.push(yearPage(year, skip));
+      const more = await Promise.all(batches); if (seq !== fetchSeq) return;
+      allFilms = [...allFilms, ...more.flat()]; expanded = true; render();
+    } catch { announce('Unable to load the complete list right now'); $('fullList').disabled = false; }
+  });
+  addEventListener('resize', () => { if (allFilms.length && !expanded) { page = 0; render(); } });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) rotateHero(); });
+  const search = $('siteSearch'), results = $('searchResults');
+  function closeSearch() { results.hidden = true; search.setAttribute('aria-expanded', 'false'); }
+  const makeSearchButton = (label, detail, callback) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'search-result'; const name = document.createElement('span'); name.textContent = label; const meta = document.createElement('small'); meta.textContent = detail; b.append(name, meta); b.addEventListener('click', () => { closeSearch(); search.value = ''; callback(); }); return b; };
+  let pendingSearch;
+  async function doSearch() {
+    const q = search.value.trim().toLocaleLowerCase(); results.replaceChildren();
+    if (!q) { closeSearch(); return; }
+    results.hidden = false; search.setAttribute('aria-expanded', 'true');
+    const matchingYears = years.filter(y => y.includes(q)).slice(0, 5);
+    matchingYears.forEach(y => results.append(makeSearchButton(y, 'Browse year', () => { showYear(y); $('films').scrollIntoView({ behavior: 'smooth' }); })));
+    if (q.length >= 2) {
+      if (!globalFilms) { try { const res = await fetch(new URL('search.json', base)); if (res.ok) globalFilms = (await res.json()).films || []; else globalFilms = []; } catch { globalFilms = []; } }
+      // Don't display stale results if someone typed a different query while downloading.
+      if (search.value.trim().toLocaleLowerCase() !== q) return;
+      const hits = globalFilms.filter(f => f.name.toLocaleLowerCase().includes(q)).slice(0, 7);
+      hits.forEach(f => results.append(makeSearchButton(f.name, `${f.year} · ★ ${f.rating}`, () => { window.open('https://www.imdb.com/title/' + encodeURIComponent(f.id) + '/', '_blank', 'noopener,noreferrer'); })));
+    }
+    if (!results.children.length) { const none = document.createElement('div'); none.className = 'search-no-results'; none.textContent = 'No matching films or years.'; results.append(none); }
+  }
+  search.addEventListener('input', () => { clearTimeout(pendingSearch); pendingSearch = setTimeout(doSearch, 180); });
+  search.addEventListener('keydown', (e) => { if (e.key === 'Escape') { closeSearch(); search.blur(); } if (e.key === 'Enter' && !results.hidden) { results.querySelector('button')?.click(); } });
+  document.addEventListener('click', e => { if (!$('searchWrap').contains(e.target)) closeSearch(); });
+  (async () => {
+    try {
+      const res = await fetch(new URL('summary.json', base), { cache: 'no-store' }); if (!res.ok) throw Error('not generated');
+      const summary = await res.json(); years = Object.keys(summary.years).sort((a,b) => Number(b) - Number(a));
+      if (!years.length) throw Error('empty');
+      window.yearCounts = Object.fromEntries(Object.entries(summary.years).map(([y, v]) => [y, v.count]));
+      const select = $('yearSelect'); select.replaceChildren();
+      years.forEach(y => { const opt = document.createElement('option'); opt.value = y; opt.textContent = y; select.add(opt); });
+      const newest = String(currentYear); await showYear(years.includes(newest) ? newest : years[0]);
+      if (summary.updated) $('updated').textContent = ' · Updated ' + new Date(summary.updated).toLocaleDateString('en-AU', { day:'numeric',month:'short',year:'numeric' });
+    } catch { $('resultCount').textContent = 'Film data not published yet'; $('notice').hidden = false; $('notice').textContent = 'The website is ready. Film lists will appear after the first GitHub Actions update has completed.'; $('carouselNext').hidden = true; $('fullList').disabled = true; }
+  })();
+})();
+</script>
+</body>
+</html>
